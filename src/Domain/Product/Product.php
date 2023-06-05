@@ -10,8 +10,20 @@ class Product
 {
     use TriggersEventTrait;
 
-    public function __construct(private readonly string $productId)
+    private readonly string $productId;
+    private string $name;
+    private string $description;
+    private int $tax;
+    private int $price;
+
+    public function __construct(string $productId, string $name, string $description, int $tax, int $price)
     {
-        $this->notifyDomainEvent(new ProductWasCreated($this->productId));
+        $this->productId = $productId;
+        $this->name = $name;
+        $this->description = $description;
+        $this->tax = $tax;
+        $this->price = $price;
+
+        $this->notifyDomainEvent(new ProductWasCreated($productId));
     }
 }
