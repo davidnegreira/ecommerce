@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StatusController
 {
-    #[Route("/status", methods: [Request::METHOD_GET])]
+    #[Route("/statu", methods: [Request::METHOD_GET])]
     public function status(): JsonResponse
     {
         return new JsonResponse(status: Response::HTTP_OK);
