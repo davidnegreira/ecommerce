@@ -16,8 +16,7 @@ class DoctrineOrmProductsRepository implements ProductsRepository
 
     public function all(): array
     {
-        return $this->entityManager->getRepository(Product::class)
-            ->findBy(criteria: ['free' => 1], orderBy: ['seats.value' => 'ASC']);
+        return $this->entityManager->getRepository(Product::class)->findAll();
     }
 
     public function save(Product $car): void

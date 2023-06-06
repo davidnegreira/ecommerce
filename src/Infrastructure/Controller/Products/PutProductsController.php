@@ -8,7 +8,6 @@ use App\Application\Bus\Query\QueryBus;
 use App\Application\Products\Query\ProductsQuery;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PutProductsController
@@ -17,13 +16,13 @@ class PutProductsController
     {
     }
 
-    #[Route("/products", methods: [Request::METHOD_GET])]
+    #[Route("/api/v1/products", methods: [Request::METHOD_GET])]
     public function __invoke(Request $request): JsonResponse
     {
         $result = $this->queryBus->query(
             new ProductsQuery($request->query->get('name'))
         );
 
-        return new JsonResponse(status: Response::HTTP_OK);
+        return new JsonResponse($result);
     }
 }
