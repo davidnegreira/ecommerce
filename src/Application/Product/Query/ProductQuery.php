@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Products\Query;
+namespace App\Application\Product\Query;
 
 use App\Application\Bus\Query\Query;
 
-final class ProductsQuery extends Query
+final class ProductQuery extends Query
 {
     public function __construct(public readonly ?string $name)
     {

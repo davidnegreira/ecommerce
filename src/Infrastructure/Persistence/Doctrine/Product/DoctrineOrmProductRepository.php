@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Infrastructure\Persistence\Doctrine\Product;
 
 use App\Domain\Product\Product;
-use App\Domain\Product\ProductsRepository;
+use App\Domain\Product\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-class DoctrineOrmProductsRepository implements ProductsRepository
+class DoctrineOrmProductRepository implements ProductRepository
 {
     public function __construct(private readonly EntityManagerInterface $entityManager)
     {
