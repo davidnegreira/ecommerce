@@ -22,8 +22,7 @@ final class Version20230605202209 extends AbstractMigration
         $this->addSql('CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, email VARCHAR(180) NOT NULL, token VARCHAR(180) NOT NULL, roles CLOB NOT NULL, name VARCHAR(100) NOT NULL)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E9E7927C74 ON users (email)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E93D434371 ON users (token);');
-        $this->addSql('CREATE TABLE products (id VARCHAR(36) NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, tax INTEGER NOT NULL, price NUMERIC(10, 2) NOT NULL, PRIMARY KEY(id));
-');
+        $this->addSql('CREATE TABLE products (id VARCHAR(36) NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, tax INTEGER NOT NULL, price NUMERIC(10, 2) NOT NULL, PRIMARY KEY(id))');
 
         $this->addSql('INSERT INTO users (email, token, roles, name) VALUES ("admin@test.test", "admintoken",\'["ROLE_ADMIN"]\',"Admin User")');
 

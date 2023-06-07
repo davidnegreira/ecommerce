@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.1-apache
 
 ENV APP_ENV=prod
 
@@ -26,10 +26,10 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN set -eux; \
     if [ -f composer.json ]; then \
-		composer install; \
+		composer install --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress; \
 		composer clear-cache; \
         mkdir -p var/cache var/log; \
-		composer dump-autoload --classmap-authoritative; \
+		composer dump-autoload --classmap-authoritative --no-dev; \
 		composer dump-env prod; \
 		composer run-script --no-dev post-install-cmd; \
 		chmod +x bin/console; sync; \
