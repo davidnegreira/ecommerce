@@ -14,13 +14,22 @@ class DoctrineOrmProductRepository implements ProductRepository
     {
     }
 
-    public function all(): array
+    public function save(Product $product): void
     {
-        return $this->entityManager->getRepository(Product::class)->findAll();
+        $this->entityManager->persist($product);
     }
 
-    public function save(Product $car): void
+    public function findByName(?string $name, int $page): array
     {
-        $this->entityManager->persist($car);
+        $query = $this->entityManager->getRepository(Product::class)
+            ->createQueryBuilder('product')
+            ->setFirstResult(($page - 1) * self::PAGE_SIZE)
+            ->setMaxResults(self::PAGE_SIZE);
+
+        if ($name) {
+            $query->where('product.name like :name')->setParameter('name', '%' . $name . '%');
+        }
+
+        return $query->getQuery()->getResult();
     }
 }

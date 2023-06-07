@@ -6,7 +6,10 @@ namespace App\Domain\Product;
 
 interface ProductRepository
 {
-    /** @return Product[] */
-    public function all(): array;
+    public const PAGE_SIZE = 10;
 
+    /** @return Product[] */
+    public function findByName(?string $name, int $page): array;
+
+    public function save(Product $product): void;
 }
