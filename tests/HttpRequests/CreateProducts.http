@@ -1,0 +1,10 @@
+POST http://127.0.0.1:8000/api/v1/product
+Authorization: Bearer admintoken
+
+{
+    "productId": "3810d26a-0cba-437a-9f83-a7358543946a",
+    "name": "name product created2",
+    "description": "description created2",
+    "tax": 11,
+    "price": 12.12
+}
